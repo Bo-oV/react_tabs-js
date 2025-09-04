@@ -16,44 +16,16 @@ export const App = () => {
     setActiveTabId(id);
   };
 
-  const activeTab = tabs.find(tab => tab.id === activeTabId) || tabs[0];
+  const active = tabs.find(t => t.id === activeTabId) || tabs[0];
 
   return (
     <div className="section">
-      <h1 className="title">{`Selected tab is ${activeTab.title}`}</h1>
-
-      <div data-cy="TabsComponent">
-        <div className="tabs is-boxed">
-          <Tabs
-            tabs={tabs}
-            activeTabId={activeTabId}
-            onTabSelected={tabSelected}
-          />
-          {/* <ul>
-          <li className="is-active" data-cy="Tab">
-            <a href="#tab-1" data-cy="TabLink">
-              Tab 1
-            </a>
-          </li>
-
-          <li data-cy="Tab">
-            <a href="#tab-2" data-cy="TabLink">
-              Tab 2
-            </a>
-          </li>
-
-          <li data-cy="Tab">
-            <a href="#tab-3" data-cy="TabLink">
-              Tab 3
-            </a>
-          </li>
-        </ul> */}
-        </div>
-
-        <div className="block" data-cy="TabContent">
-          {activeTab.content}
-        </div>
-      </div>
+      <Tabs
+        activeTabId={activeTabId}
+        tabs={tabs}
+        active={active}
+        onTabSelected={tabSelected}
+      />
     </div>
   );
 };
