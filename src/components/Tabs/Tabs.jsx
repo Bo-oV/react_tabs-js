@@ -1,9 +1,11 @@
 import classNames from 'classnames';
 
-export const Tabs = ({ tabs, activeTabId, onTabSelected, active }) => {
+export const Tabs = ({ tabs, activeTabId, onTabSelected }) => {
   return (
     <>
-      <h1 className="title">{`Selected tab is ${active.title}`}</h1>
+      <h1 className="title">{`Selected tab is ${
+        (tabs.find(t => t.id === activeTabId) || tabs[0]).title
+      }`}</h1>
 
       <div data-cy="TabsComponent">
         <div className="tabs is-boxed">
@@ -31,7 +33,7 @@ export const Tabs = ({ tabs, activeTabId, onTabSelected, active }) => {
         </div>
 
         <div className="block" data-cy="TabContent">
-          {active.content}
+          {(tabs.find(t => t.id === activeTabId) || tabs[0]).title}
         </div>
       </div>
     </>
